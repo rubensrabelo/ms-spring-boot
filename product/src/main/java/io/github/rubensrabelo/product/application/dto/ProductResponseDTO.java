@@ -1,4 +1,4 @@
-package io.github.rubensrabelo.product.config.application.dto;
+package io.github.rubensrabelo.product.application.dto;
 
 import java.util.Objects;
 
