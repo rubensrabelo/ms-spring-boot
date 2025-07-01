@@ -25,6 +25,7 @@ public class ClientController {
     @GetMapping(params = "cpf")
     public ResponseEntity<ClientResponseDTO> findByCpf(@RequestParam("cpf") String cpf) {
         log.info("GET /clients?cpf={} - Searching for customer data with cpf: ", cpf);
+        log.info("-- " + cpf);
 
         ClientResponseDTO dto = service.findClientByCpf(cpf);
         return ResponseEntity.ok().body(dto);

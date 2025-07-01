@@ -11,15 +11,17 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String name;
     private String cpf;
     private String email;
 
     public Client() {
     }
 
-    public Client(String nome, String email) {
-        this.nome = nome;
+    public Client(Long id, String name, String cpf, String email) {
+        this.id = id;
+        this.name = name;
+        this.cpf = cpf;
         this.email = email;
     }
 
@@ -31,12 +33,12 @@ public class Client {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCpf() {
@@ -59,11 +61,11 @@ public class Client {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(id, client.id) && Objects.equals(nome, client.nome) && Objects.equals(cpf, client.cpf) && Objects.equals(email, client.email);
+        return Objects.equals(id, client.id) && Objects.equals(name, client.name) && Objects.equals(cpf, client.cpf) && Objects.equals(email, client.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, cpf, email);
+        return Objects.hash(id, name, cpf, email);
     }
 }

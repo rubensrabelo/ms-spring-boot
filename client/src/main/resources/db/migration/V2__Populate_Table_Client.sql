@@ -1,4 +1,4 @@
-INSERT INTO tb_client (nome, cpf, email)
+INSERT INTO tb_client (name, cpf, email)
 VALUES
-    ('João Silva', '123.456.789-00', 'joao.silva@email.com'),
-    ('Maria Oliveira', '987.654.321-00', 'maria.oliveira@email.com');
+    ('João Silva', '12345678900', 'joao.silva@test.com'),
+    ('Maria Oliveira', '98765432100', 'maria.oliveira@test.com');

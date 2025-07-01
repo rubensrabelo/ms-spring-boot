@@ -9,6 +9,9 @@ public class ClientResponseDTO {
     private String cpf;
     private String email;
 
+    public ClientResponseDTO() {
+    }
+
     public ClientResponseDTO(Long id, String name, String cpf, String email) {
         this.id = id;
         this.name = name;
