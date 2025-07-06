@@ -38,7 +38,8 @@ public class ProductService {
         if(quantity < 1)
             throw new InvalidQuantityValueException("Quantity value cannot be less than 1.");
 
-        Product entity = findById(id);
+        Product entity = repository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException("Product with id=" + id + " not found."));;
 
         if (entity.getQuantity() == 0)
             throw new ProductIsNotInStockException("Product is not available in stock.");
