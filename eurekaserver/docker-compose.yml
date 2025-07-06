@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  eurekaserver:
+    build:
+      context: .
+    container_name: eurekaserver
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_SECURITY_USER_NAME=cursoms-eureka-user
+      - SPRING_SECURITY_USER_PASSWORD=ecok-usr-eeuramssur
+    networks:
+      - eurekanet
+
+networks:
+  eurekanet:
+    external: true
