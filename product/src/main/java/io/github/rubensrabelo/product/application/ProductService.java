@@ -2,7 +2,7 @@ package io.github.rubensrabelo.product.application;
 
 import io.github.rubensrabelo.product.application.dto.ProductCreateDTO;
 import io.github.rubensrabelo.product.application.dto.ProductResponseDTO;
-import io.github.rubensrabelo.product.application.dto.PurchaseMessageDTO;
+import io.github.rubensrabelo.product.application.dto.UpdateQuantityMessageDTO;
 import io.github.rubensrabelo.product.application.exceptions.InvalidQuantityValueException;
 import io.github.rubensrabelo.product.application.exceptions.ProductIsNotInStockException;
 import io.github.rubensrabelo.product.application.exceptions.ProductNotFoundException;
@@ -22,10 +22,10 @@ public class ProductService {
         this.modelMapper = modelMapper;
     }
 
-    public Product findById(Long id){
-        Product product = repository.findById(id)
+    public ProductResponseDTO findById(Long id){
+        Product entity = repository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException("Product with id=" + id + " not found."));
-        return product;
+        return modelMapper.map(entity, ProductResponseDTO.class);
     }
 
     public ProductResponseDTO create(ProductCreateDTO dtoCreate){
@@ -34,7 +34,7 @@ public class ProductService {
         return modelMapper.map(entity, ProductResponseDTO.class);
     }
 
-    public PurchaseMessageDTO updateQuantity(Long id, int quantity){
+    public UpdateQuantityMessageDTO updateQuantity(Long id, int quantity){
         if(quantity < 1)
             throw new InvalidQuantityValueException("Quantity value cannot be less than 1.");
 
@@ -52,7 +52,7 @@ public class ProductService {
         String message = "Purchase completed successfully.";
         double value = entity.getUnitValue() * quantity;
 
-        PurchaseMessageDTO messageDTO = new PurchaseMessageDTO(message, quantity, value);
+        UpdateQuantityMessageDTO messageDTO = new UpdateQuantityMessageDTO(message, quantity, value);
 
         return messageDTO;
     }
