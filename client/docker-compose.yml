@@ -1,36 +1,29 @@
-version: "3.8"
-
 services:
-  app:
+  msclient:
     build: .
     container_name: msclient
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/db_client
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://cursoms-eureka-user:ecok-usr-eeuramssur@eurekaserver:8761/eureka
+      - SPRING_PROFILES_ACTIVE=dev
     depends_on:
       - db
     networks:
-      - eurekanet
+      - microservices-network
 
   db:
-    image: postgres:15
-    container_name: clientdb
+    image: postgres:15-alpine
+    container_name: postgres-msclient
     environment:
-      POSTGRES_DB: db_client
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-    ports:
-      - "5433:5432"
+      POSTGRES_DB: db_client
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     networks:
-      - eurekanet
-
-volumes:
-  postgres-data:
+      - microservices-network
 
 networks:
-  eurekanet:
+  microservices-network:
     external: true
+
+volumes:
+  postgres_data:

@@ -1,18 +1,14 @@
-version: '3.8'
-
 services:
   eurekaserver:
     build:
       context: .
+      dockerfile: Dockerfile
     container_name: eurekaserver
     ports:
       - "8761:8761"
-    environment:
-      - SPRING_SECURITY_USER_NAME=eurekaserver
-      - SPRING_SECURITY_USER_PASSWORD=eurekaserver
     networks:
-      - eurekanet
+      - microservices-network
 
 networks:
-  eurekanet:
+  microservices-network:
     external: true

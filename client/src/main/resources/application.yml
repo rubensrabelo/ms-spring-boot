@@ -16,7 +16,9 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://cursoms-eureka-user:ecok-usr-eeuramssur@eurekaserver:8761/eureka/
+      defaultZone: http://eurekaserver:eurekaserver@eurekaserver:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
