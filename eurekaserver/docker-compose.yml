@@ -8,8 +8,8 @@ services:
     ports:
       - "8761:8761"
     environment:
-      - SPRING_SECURITY_USER_NAME=cursoms-eureka-user
-      - SPRING_SECURITY_USER_PASSWORD=ecok-usr-eeuramssur
+      - SPRING_SECURITY_USER_NAME=eurekaserver
+      - SPRING_SECURITY_USER_PASSWORD=eurekaserver
     networks:
       - eurekanet
 

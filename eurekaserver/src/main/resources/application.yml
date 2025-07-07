@@ -3,8 +3,8 @@ spring:
     name: eurekaserver
   security:
     user:
-      name: cursoms-eureka-user
-      password: ecok-usr-eeuramssur
+      name: eurekaserver
+      password: eurekaserver
 
 server:
   port: 8761
